@@ -25,15 +25,34 @@ var commands = {
 commands.wysiwyg = commands.html;
 
 function bindCommands (surface, options, editor) {
-  bind('bold', 'cmd+b', bold);
-  bind('italic', 'cmd+i', italic);
-  bind('quote', 'cmd+j', router('blockquote'));
-  bind('code', 'cmd+e', code);
-  bind('ol', 'cmd+o', ol);
-  bind('ul', 'cmd+u', ul);
-  bind('heading', 'cmd+d', router('heading'));
-  editor.showLinkDialog = fabricator(bind('link', 'cmd+k', linkOrImageOrAttachment('link')));
-  editor.showImageDialog = fabricator(bind('image', 'cmd+g', linkOrImageOrAttachment('image')));
+  if (options.commands.bold) {
+    bind('bold', 'cmd+b', bold);
+  }
+  if (options.commands.italic) {
+    bind('italic', 'cmd+i', italic);
+  }
+  if (options.commands.blockquote) {
+    bind('quote', 'cmd+j', router('blockquote'));
+  }
+  if (options.commands.code) {
+    bind('code', 'cmd+e', code);
+  }
+  if (options.commands.ol) {
+    bind('ol', 'cmd+o', ol);
+  }
+  if (options.commands.ul) {
+    bind('ul', 'cmd+u', ul);
+  }
+  if (options.commands.heading) {
+    bind('heading', 'cmd+d', router('heading'));
+  }
+
+  if (options.commands.link) {
+    editor.showLinkDialog = fabricator(bind('link', 'cmd+k', linkOrImageOrAttachment('link')));
+  }
+  if (options.commands.image) {
+    editor.showImageDialog = fabricator(bind('image', 'cmd+g', linkOrImageOrAttachment('image')));
+  }
   editor.linkOrImageOrAttachment = linkOrImageOrAttachment;
 
   if (options.attachments) {

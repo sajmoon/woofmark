@@ -17,6 +17,7 @@ var xhrStub = require('./xhrStub');
 var prompt = require('./prompts/prompt');
 var closePrompts = require('./prompts/close');
 var modeNames = ['markdown', 'html', 'wysiwyg'];
+var defaultCommands = require('./commands');
 var cache = [];
 var mac = /\bMac OS\b/.test(global.navigator.userAgent);
 var doc = document;
@@ -68,6 +69,7 @@ function woofmark (textarea, options) {
   if (o.classes.wysiwyg === void 0) { o.classes.wysiwyg = []; }
   if (o.classes.prompts === void 0) { o.classes.prompts = {}; }
   if (o.classes.input === void 0) { o.classes.input = {}; }
+  if (o.commands === void 0) { o.commands = defaultCommands; }
 
   var preference = o.storage && ls.get(o.storage);
   if (preference) {

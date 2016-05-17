@@ -250,6 +250,23 @@ Example:
 }
 ```
 
+### `options.commands`
+
+Use to disable buttons in the toolbar.
+
+Example:
+
+```js
+{
+  bold: true,
+  image: true,
+  link: true
+}
+```
+
+Will only display bold, italic and link in the toolbar. If non is specified, all is enabled.
+If one is specified all other options fallback to disabled.
+
 # `editor`
 
 The `editor` API allows you to interact with `woofmark` editor instances. This is what you get back from `woofmark(textarea, options)` or `woofmark.find(textarea)`.
